@@ -1,4 +1,4 @@
-from Flask import Flask #Import flask class  from flask module.
+from flask import Flask #Import flask class  from flask module.
 
 app = Flask(__name__) #Create an instance of the Flask class; my web app.
 
