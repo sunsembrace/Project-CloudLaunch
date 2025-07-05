@@ -1,0 +1,21 @@
+#Service is a bridge/stable network endpoint to let other parts of your system/outside users - talk to your running aoo (pods).
+#Deployment creates multiple app instances (pod).
+#Pods can have dynamic IPs that change if they restart.
+#Service gets a FIXED IP / DNS name that forwards traffic to those pods automatically.
+
+#So Service YAML is the config file that tells k8's:
+#What type of service you want (ClusterIP,NodePort,LoadBalancer).
+#Which pods (by labels) the service should send traffic to.
+#Which port the service listens on and which port it forwards to inside the pods.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-app-service
+spec:
+  selector:
+    app.kubernetes.io/name: python-app
+  ports:
+    - protocol: TCP
+      port: 80 # Port the service exposes externally
+      targetPort: 5000 #Port inside your pod (Flask Listens here)
