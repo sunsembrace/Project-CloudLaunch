@@ -1,0 +1,16 @@
+#Step 3.1 Getting started to understand Workflow via workflow syntax docs.
+#Defines name of the pipeline & When to trigger (e.g push on main).
+name: Build & Reploy
+
+on:
+    push:
+        branches: [main]
+
+#Step 3.2 - Defining job environment machine for Github Actions to run on. 
+jobs:
+    docker-build-push:
+        runs-on: ubuntu latest
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v3
