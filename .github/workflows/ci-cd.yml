@@ -38,3 +38,18 @@ jobs:
                 push: true
                 tags: yourdockerhubusername/my-python-app:latest
 
+#Steps 3.7 Set up kubectl to Deploy the Kubernetes.
+            - name: Set up kubectl
+              uses: azure/setup-kubectl@v3
+              with:
+                version: 'latest'
+
+#Steps 3.8 - Deploy to Kubernetes
+            - name: Deploy to Kubernetes
+              env:
+                KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+              run: |
+                echo "$KUBE_CONFIG_DATA" | base64 --decode > kubeconfig
+                export KUBECONFIG=$PWD/kubeconfig
+                kubectl apply -f k8s/deployment.yaml
+                kubectl apply -f k8s/service.yaml
