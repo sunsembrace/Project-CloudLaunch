@@ -55,4 +55,4 @@ jobs:
                 kubectl apply -f k8s/service.yaml
 
 #Step 3.9 to encode kubeconfig with 'cat ~/.kube/config | base64 -w 0'
-#Need to paste the result into a GitHub Secret named KUBE_CONFIG_DATA
+#Used diff command that worked --> [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes((Get-Content -Raw $HOME\.kube\config)))
