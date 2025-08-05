@@ -150,3 +150,20 @@ Challenge: Automating deployment to EKS.
 Solution: Encoded kubeconfig securely and used GitHub Actions with kubectl.
 
 
+15. Notes to explain architectural decision summary: 🧭 Why Docker and Kubernetes for a Simple Flask App?
+You could include a section like this under Technical Overview or Project Objectives:
+
+🧭 Why This Stack?
+Although the core Flask app is minimal, the purpose of this project isn't just to run an app—it's to understand and apply cloud-native deployment principles on a small, controlled use case. Here's the reasoning:
+
+Docker 🐳:
+Containerizing even a simple app provides a consistent runtime environment, making it portable across local, staging, and production setups. It's also the baseline for any microservice or DevOps pipeline.
+
+Kubernetes ☸️:
+While overkill for just one app, Kubernetes teaches vital infrastructure-as-code and orchestration concepts like deployment strategies, self-healing, and service discovery. I manually wrote manifests to understand cluster behavior, not rely on abstractions like kubectl run.
+
+CI/CD with GitHub Actions 🤖:
+Automating testing and deployment from the start builds good habits. It mimics real-world workflows and helps reinforce infrastructure automation, which scales well for bigger apps.
+
+Amazon EKS ☁️:
+Deploying on a cloud-hosted cluster forces you to think about production-ready concerns—credentials, cluster roles, network exposure, etc. It’s a simplified but realistic cloud deployment environment.
